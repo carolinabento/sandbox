@@ -1,8 +1,9 @@
 sandbox
 =======
 
-This is the repo for the analyses/visualizations on my [website][website].
+This is the repo for the analyses/visualizations that are posted on my [website][website].
 
+You can check the HomeExpenses.R, which is the code I used to analyse my personal expenses.
 
 Contact
 -------
