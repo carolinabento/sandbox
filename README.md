@@ -3,7 +3,7 @@ sandbox
 
 This is the repo for the analyses/visualizations that are posted on my [website][website].
 
-You can check the HomeExpenses.R, which is the code I used to analyse my personal expenses.
+In homeExpenses, you can check how I analysed 3 months of personal expenses.
 
 Contact
 -------
