@@ -1,13 +1,18 @@
 # This is the R code that I used to create the Home Expenses Analysis (http://carolbento.com/homeExpenses.html)
-# The data for the analysis of the 1st trimester of 2013 were
+# The data for the analysis of the 1st semester of 2013 were
 #	- march.csv
 #	- april.csv
 #	- may.csv
+#	- june.csv
+#	- july.csv
+#	- august.csv
 
 
-#########################
-#	Auxiliary Fucntions	#
-#########################
+#####
+#
+#	Auxiliary Functions
+#
+#####
 
 
 # args 	: data - data frame with monthly data
@@ -51,38 +56,6 @@ commonSum <-data.frame(Month= character(0),Category= character(0),Total=numeric(
 }
 
 
-
-
-# args 	: df1 adnd df2 - data frame corresponding to the expenses in 2 distinct months
-#
-# Given the 2 data frames, returns an aggregate data frame consisting in the sum (amount spent) by category in each month.
-# Categories that are present in only one of the data frames, are also included
-aggregateTotal <- function(df1, df2){
-
-	resDf <- data.frame(Category=character(0), Total=numeric(0))
-
-	df1Categories <- levels(df1$Category)
-	df2Categories <- levels(df2$Category)
-
-	for(cat in df1Categories){
-		if(cat %in% df2Categories){
-			row <- data.frame(Category= cat, Total= (subset(df1, Category==cat)$Total + subset(df2, Category==cat)$Total))
-			resDf <- rbind(resDf,row)
-		}else{
-			row <- data.frame(Category= cat, Total= (subset(df1, Category==cat)$Total))
-			resDf <- rbind(resDf,row)
-		}
-	}
-
-	for(cat in df2Categories){
-		if(!(cat %in% df1Categories)){
-			row <- data.frame(Category= cat, Total= subset(df2, Category==cat)$Total)
-			resDf <- rbind(resDf,row)
-		}
-	}
-	resDf
-}
-
 # args 	: data - data frame
 #		: cat - category
 #
@@ -116,7 +89,8 @@ aprilCategories <- as.vector(unique(aprilExpenses$Category))
 mayExpenses <- read.csv("./data/may.csv",quote="",header=TRUE)
 mayCategories <- as.vector(unique(mayExpenses$Category))
 
-
+# Load the utiliy functions
+source("../utils.R")
 
 
 # General statistical of the data
@@ -143,20 +117,23 @@ mayMedian <-  median(maySum$Total);
 mayMode <- mode(maySum$Total);
 
 
-# This was used to create the first chart
 # Total spent in the trimester
+# Values used to create the first chart
+marchTotal <- sum(marchSum$Total)
+aprilTotal <- sum(aprilSum$Total)
+mayTotal <- sum(maySum$Total)
 total <- c(marchTotal,aprilTotal,mayTotal);
 
 # Common product categories for the trimester
 commonCategories <- intersect(intersect(marchCategories,aprilCategories), mayCategories)
 
-# This was used to create the second chart, i.e., the pie chart
 # This chart only shows the total amount spent for the common categories
+# Values used to create the second chart, i.e., the pie chart
 total3M <- aggregateTotal(aggregateTotal(marchSum,aprilSum), maySum)
 
 
 
-# This was used to create the third chart, i.e., the stacked bar chart
+# Values used to create the third chart, i.e., the stacked bar chart
 # In this case, the 'Eat Out' and 'Take Away' categories were merged into the 'Eat Out' category, 
 #and the 'Meat' and 'Fish' categories were merged, for better reading/analysis of the chart
 
