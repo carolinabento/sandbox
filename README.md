@@ -7,7 +7,7 @@ In [homeExpenses][home], you can check how I analyzed 6 months of personal expen
 
 In [foodPyramid][food], you can check how I analyzed my eating habits in the course of 6 months.
 
-In [affinityAnalysis][food], you can check how I used the [Apriori algorithm][apriori] to see which products I was frequently buying together.
+In [affinityAnalysis][affinity], you can check how I used the [Apriori algorithm][apriori] to see which products I was frequently buying together.
 
 
 
