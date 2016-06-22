@@ -9,6 +9,8 @@ In [foodPyramid][food], you can check how I analyzed my eating habits in the cou
 
 In [affinityAnalysis][affinity], you can check how I used the [Apriori algorithm][apriori] to see which products I was frequently buying together.
 
+In [linearRegression][linearReg], is an example of how to use a linear regression model.
+
 
 
 
@@ -25,3 +27,4 @@ If you want to get in touch, drop me a line <carol@carolbento.com>
 [food]:http://carolbento.com/foodPyramid.html
 [affinity]:http://carolbento.com/affinityAnalysis.html
 [apriori]:http://en.wikipedia.org/wiki/Apriori_algorithm
+[linearReg]:http://carolbento.com/#/project06
